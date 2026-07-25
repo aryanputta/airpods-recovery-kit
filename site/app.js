@@ -72,9 +72,10 @@ function setMode(nextMode) {
   }
 
   if (mode === RecoveryMode.MOISTURE) {
-    primaryTitle.textContent = "My AirPods are out of my ears";
+    primaryTitle.textContent =
+      "My AirPods dried for 2+ hours and are out of my ears";
     primaryHelp.textContent =
-      "Place both speaker meshes downward on a clean, dry cloth.";
+      "Wipe them dry first, then place the meshes downward.";
     startButton.textContent = "Run 20-second moisture pulse";
     statusTitle.textContent = "Ready for moisture mode";
   } else {
@@ -130,7 +131,7 @@ async function startRecovery() {
       : "Comparing left and right";
   statusMessage.textContent =
     mode === RecoveryMode.MOISTURE
-      ? "Keep both AirPods out of your ears and facing downward."
+      ? "Keep both dry AirPods out of your ears and facing downward."
       : "First tone: left. Second tone: right.";
 
   let stoppedByUser = false;

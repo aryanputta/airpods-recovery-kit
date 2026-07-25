@@ -44,3 +44,8 @@ test("unknown modes fail before route inspection", () => {
   assert.ok(modeValidation >= 0);
   assert.ok(routeInspection > modeValidation);
 });
+
+test("moisture pulse requires the drying-period warning", () => {
+  assert.match(script, /dry completely for at least two hours/);
+  assert.match(script, /--confirm-out-of-ears/);
+});

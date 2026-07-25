@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Help diagnose wet, water-damaged, quiet, one-sided, or distorted AirPods with a private 20-second moisture pulse and left/right audio test."
-    />
-    <meta
-      name="keywords"
-      content="damaged AirPods, wet AirPods, AirPods water damage, dry AirPods, water in AirPods, AirPods water eject, one AirPod quiet, left AirPod not working, distorted AirPods"
+      content="Learn what to do when AirPods get wet, then run a private 20-second moisture pulse or left/right test for quiet, muffled, or distorted sound."
     />
     <meta name="theme-color" content="#f4f7f5" />
     <meta
       property="og:title"
-      content="Wet or Damaged AirPods Help | AirPods Recovery Kit"
+      content="Wet AirPods? How to Dry and Test Them Safely"
     />
     <meta
       property="og:description"
-      content="A free private browser test for wet, water-damaged, quiet, one-sided, or distorted AirPods."
+      content="Dry wet AirPods first, then run a free private moisture pulse or left/right audio test."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AirPods Recovery Kit" />
     <meta
       property="og:url"
       content="https://aryanputta.github.io/airpods-recovery-kit/"
     />
     <meta
       property="og:image"
-      content="https://aryanputta.github.io/airpods-recovery-kit/social-preview.svg"
+      content="https://aryanputta.github.io/airpods-recovery-kit/social-preview.png"
     />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
       content="AirPods Recovery Kit private browser audio test"
@@ -36,7 +36,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Wet or Damaged AirPods Help | AirPods Recovery Kit"
+      content="Wet AirPods? How to Dry and Test Them Safely"
     />
     <meta
       name="twitter:description"
@@ -44,27 +44,50 @@
     />
     <meta
       name="twitter:image"
-      content="https://aryanputta.github.io/airpods-recovery-kit/social-preview.svg"
+      content="https://aryanputta.github.io/airpods-recovery-kit/social-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="AirPods Recovery Kit private browser audio test"
     />
     <link
       rel="canonical"
       href="https://aryanputta.github.io/airpods-recovery-kit/"
     />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <title>Wet or Damaged AirPods Help | Free AirPods Audio Test</title>
+    <title>Wet AirPods? How to Dry and Test Them Safely</title>
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "WebSite",
+            "@id": "https://aryanputta.github.io/airpods-recovery-kit/#website",
+            "name": "AirPods Recovery Kit",
+            "url": "https://aryanputta.github.io/airpods-recovery-kit/"
+          },
+          {
             "@type": "WebApplication",
+            "@id": "https://aryanputta.github.io/airpods-recovery-kit/#application",
             "name": "AirPods Recovery Kit",
             "url": "https://aryanputta.github.io/airpods-recovery-kit/",
+            "isPartOf": {
+              "@id": "https://aryanputta.github.io/airpods-recovery-kit/#website"
+            },
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any modern browser",
+            "browserRequirements": "JavaScript and the Web Audio API",
+            "softwareVersion": "0.1.1",
+            "dateModified": "2026-07-25",
+            "codeRepository": "https://github.com/aryanputta/airpods-recovery-kit",
             "description": "A private browser tool that runs a bounded moisture pulse and left/right test for wet, water-damaged, quiet, or distorted AirPods.",
             "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
             "featureList": [
               "20-second bounded moisture pulse",
               "Left and right AirPods audio test",
@@ -77,23 +100,23 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Can a website dry wet or water-damaged AirPods?",
+                "name": "Can a website dry wet AirPods?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No website can guarantee liquid removal or hardware repair. This page can run a bounded low-frequency pulse that may move small droplets away from the speaker mesh."
+                  "text": "No website can guarantee liquid removal or hardware repair. Dry the AirPods completely for at least two hours first. This page can then run a bounded low-frequency pulse that may move small droplets away from the speaker mesh."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Why is one AirPod quiet or not working?",
+                "name": "What should I do if one AirPod stopped working after getting wet?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Possible causes include a blocked mesh, moisture, an empty battery, poor charging contact, audio balance, or damaged speaker or noise-control hardware."
+                  "text": "Let both AirPods dry completely for at least two hours, confirm each one is charging, then run the left and right test. Persistent silence or distortion may require cleaning, a reset, or hardware service."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Can a website show live AirPods battery percentage?",
+                "name": "Can this website show live AirPods battery percentage?",
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Normal browsers cannot read AirPods battery status from macOS or iOS. The optional macOS command in this project can request a current battery snapshot without printing the device name or Bluetooth address."
@@ -121,6 +144,7 @@
       </a>
       <nav aria-label="Primary">
         <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
         <a
           href="https://github.com/aryanputta/airpods-recovery-kit"
           rel="noreferrer"
@@ -138,12 +162,12 @@
             Runs locally in your browser
           </p>
           <h1 id="page-title">
-            Help wet, damaged, or quiet AirPods sound normal again.
+            Dry wet AirPods first. Then test what still sounds wrong.
           </h1>
           <p class="intro">
-            Check suspected AirPods water damage or one AirPod not working with
-            a careful moisture pulse and left/right test. No account, no upload,
-            and no automatic playback.
+            Follow the safe drying steps, then check AirPods water damage, one
+            AirPod not working, muffled sound, or crackling with a careful
+            moisture pulse and left/right test. No upload or automatic playback.
           </p>
 
           <div class="activation-flow" aria-label="Activation steps">
@@ -265,9 +289,11 @@
             <label>
               <input id="primary-confirmation" type="checkbox" />
               <span>
-                <strong id="primary-title">My AirPods are out of my ears</strong>
+                <strong id="primary-title">
+                  My AirPods dried for 2+ hours and are out of my ears
+                </strong>
                 <small id="primary-help">
-                  Place both speaker meshes downward on a clean, dry cloth.
+                  Wipe them dry first, then place the meshes downward.
                 </small>
               </span>
             </label>
@@ -304,6 +330,45 @@
             </div>
             <p id="recommendation" class="recommendation" aria-live="polite"></p>
           </div>
+        </div>
+      </section>
+
+      <section class="first-aid" aria-labelledby="first-aid-title">
+        <div class="first-aid-copy">
+          <p class="eyebrow"><span></span>Before any audio test</p>
+          <h2 id="first-aid-title">Dry first. Test second.</h2>
+          <p>
+            Water resistance is not waterproofing. Give the hardware time to
+            dry before checking the sound.
+          </p>
+        </div>
+        <div class="first-aid-steps">
+          <ol>
+            <li>
+              <span>1</span>
+              <p><strong>Wipe dry.</strong> Use a soft, dry, lint-free cloth.</p>
+            </li>
+            <li>
+              <span>2</span>
+              <p>
+                <strong>Wait at least two hours.</strong> Do not use the AirPods
+                or return them to the charging case before they are fully dry.
+              </p>
+            </li>
+            <li>
+              <span>3</span>
+              <p>
+                <strong>Avoid forced drying.</strong> Do not use heat or
+                compressed air.
+              </p>
+            </li>
+          </ol>
+          <p class="source-note">
+            Based on
+            <a href="https://support.apple.com/105046" rel="noreferrer">
+              Apple’s current water-exposure guidance
+            </a>.
+          </p>
         </div>
       </section>
 
@@ -421,23 +486,27 @@ cd airpods-recovery-kit
         </details>
       </section>
 
-      <section class="faq" aria-labelledby="faq-title">
+      <section class="faq" id="faq" aria-labelledby="faq-title">
         <p class="eyebrow">Common questions</p>
         <h2 id="faq-title">Wet, damaged, or one-sided AirPods</h2>
         <details>
           <summary>Can a website dry wet AirPods?</summary>
           <p>
-            No website can guarantee that. This page can play a bounded
-            low-frequency pulse that may move small droplets away from the
-            speaker mesh. Air drying and hardware service may still be needed.
+            No website can guarantee liquid removal or hardware repair. Dry the
+            AirPods completely for at least two hours first. This page can then
+            play a bounded low-frequency pulse that may move small droplets away
+            from the speaker mesh.
           </p>
         </details>
         <details>
-          <summary>Why is one AirPod quiet or not working?</summary>
+          <summary>
+            What should I do if one AirPod stopped working after getting wet?
+          </summary>
           <p>
-            Common causes include a blocked mesh, moisture, an empty battery,
-            poor charging contact, audio balance, or a damaged speaker or
-            noise-control microphone.
+            Let both AirPods dry completely for at least two hours, confirm each
+            one is charging, then run the left and right test. Persistent
+            silence or distortion may require cleaning, a reset, or hardware
+            service.
           </p>
         </details>
         <details>

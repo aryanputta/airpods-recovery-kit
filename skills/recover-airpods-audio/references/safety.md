@@ -3,6 +3,8 @@
 ## Required
 
 - Require a direct click or terminal confirmation before playback.
+- After liquid exposure, require at least two hours of complete drying before
+  use or playback.
 - Require the AirPods to be out of the user's ears.
 - Ask the user to place the speaker meshes downward on a clean, dry cloth.
 - Keep gain and duration bounded in code.

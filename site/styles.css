@@ -547,6 +547,81 @@ h2 {
   background: var(--line);
 }
 
+.first-aid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(32px, 7vw, 86px);
+  margin-bottom: 30px;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid rgba(20, 119, 94, 0.13);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.first-aid h2 {
+  margin: 0;
+}
+
+.first-aid-copy > p:last-child,
+.source-note,
+.first-aid li p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.first-aid-copy > p:last-child {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+}
+
+.first-aid-steps ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.first-aid li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.first-aid li:first-child {
+  padding-top: 0;
+}
+
+.first-aid li > span {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(20, 119, 94, 0.1);
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 760;
+}
+
+.first-aid li p {
+  margin: 1px 0 0;
+  font-size: 0.84rem;
+}
+
+.source-note {
+  margin: 14px 0 0 42px;
+  font-size: 0.72rem;
+}
+
+.source-note a {
+  color: var(--green);
+  font-weight: 680;
+}
+
 .proof-strip div {
   display: grid;
   gap: 3px;
@@ -926,6 +1001,7 @@ footer p {
 @media (max-width: 900px) {
   .hero,
   .explanation,
+  .first-aid,
   .developer-content {
     grid-template-columns: 1fr;
   }

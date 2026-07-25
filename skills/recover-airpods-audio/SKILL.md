@@ -17,10 +17,12 @@ component percentage.
 
 1. Read [references/safety.md](references/safety.md).
 2. Confirm which device currently owns the AirPods connection.
-3. Require the user to remove both AirPods from their ears before a recovery
+3. After liquid exposure, require at least two hours of complete drying before
+   use or a recovery tone.
+4. Require the user to remove both AirPods from their ears before a recovery
    tone.
-4. Require an explicit user action before playback.
-5. On macOS, use `scripts/airpods-recovery.sh` so the selected output is checked
+5. Require an explicit user action before playback.
+6. On macOS, use `scripts/airpods-recovery.sh` so the selected output is checked
    without printing or storing its personal device name.
 
 ## Procedure
@@ -56,7 +58,8 @@ The battery command prints only available component percentages. It never
 prints the AirPods device name or Bluetooth address. A browser cannot read this
 macOS status.
 
-After the user explicitly confirms both AirPods are out of their ears:
+After the user explicitly confirms both AirPods dried completely for at least
+two hours and are out of their ears:
 
 ```bash
 ./scripts/airpods-recovery.sh pulse --confirm-out-of-ears
@@ -75,6 +78,7 @@ confirmation in the current conversation.
 
 - Never autoplay sound.
 - Never play before the user confirms the output.
+- Never play a recovery pulse within two hours of liquid exposure.
 - Never instruct the user to wear the AirPods during a recovery pulse.
 - Never expose or store Bluetooth addresses, pairing records, environment
   variables, usernames, or credentials.

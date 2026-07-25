@@ -109,14 +109,16 @@ case "$MODE" in
     ;;
   pulse)
     if [[ "$CONFIRMATION" != "--confirm-out-of-ears" ]]; then
-      print -u2 "Remove both AirPods from your ears and place the meshes downward."
+      print -u2 "Let both AirPods dry completely for at least two hours."
+      print -u2 "Then remove them from your ears and place the meshes downward."
       print -u2 "Then rerun with --confirm-out-of-ears."
       exit 2
     fi
     python3 "$SCRIPT_DIR/generate_audio.py" \
       pulse "$RECOVERY_CACHE/moisture-pulse.wav" >/dev/null
     prepare_output_volume
-    print "Playing one bounded 20-second pulse. Keep AirPods out of your ears."
+    print "Playing one bounded 20-second pulse after the required drying period."
+    print "Keep both AirPods out of your ears."
     /usr/bin/afplay "$RECOVERY_CACHE/moisture-pulse.wav"
     restore_output_volume
     print "Pulse complete. Leave the AirPods facing downward before retesting."
