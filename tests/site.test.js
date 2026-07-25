@@ -46,6 +46,8 @@ test("page includes canonical and structured metadata", () => {
   assert.match(html, /Wet or Damaged AirPods Help/);
   assert.match(html, /"@type": "FAQPage"/);
   assert.match(html, /AirPods water damage/);
+  assert.match(html, /property="og:image"/);
+  assert.match(html, /name="twitter:card"/);
 
   const structuredData = html.match(
     /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,

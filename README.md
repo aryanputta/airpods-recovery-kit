@@ -6,6 +6,12 @@
 [![Deploy GitHub Pages](https://github.com/aryanputta/airpods-recovery-kit/actions/workflows/pages.yml/badge.svg)](https://github.com/aryanputta/airpods-recovery-kit/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-17221e.svg)](LICENSE)
 
+<p align="center">
+  <a href="https://aryanputta.github.io/airpods-recovery-kit/">
+    <img src="site/social-preview.svg" alt="AirPods Recovery Kit browser tool preview" width="100%">
+  </a>
+</p>
+
 AirPods Recovery Kit is a one-page browser tool, macOS terminal workflow, and
 Codex skill for damaged or wet AirPods, AirPods water damage, one AirPod
 sounding quiet, left or right audio failing, and distorted audio after moisture
@@ -137,7 +143,7 @@ site/
 skills/
   recover-airpods-audio/
     SKILL.md            Codex operating procedure
-    scripts/            macOS route check and WAV generator
+    scripts/            battery, route, and bounded WAV tools
     references/         safety boundary
 tests/                  browser-contract and WAV tests
 scripts/audit-public.sh privacy and validation gate
@@ -173,7 +179,8 @@ The audit rejects:
 ## Updates
 
 - **2026-07-25:** Added the one-page browser tool, animated recovery state,
-  macOS route guard, Codex skill, privacy audit, and bounded waveform tests.
+  anonymous battery snapshot, macOS route guard, Codex skill, privacy audit,
+  structured search metadata, and bounded waveform tests.
 
 ## License
 

@@ -1,0 +1,237 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="630"
+  viewBox="0 0 1200 630"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">AirPods Recovery Kit</title>
+  <desc id="description">
+    A private browser test for wet, damaged, quiet, or distorted AirPods.
+  </desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7faf8" />
+      <stop offset="1" stop-color="#e7f2ef" />
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#9bd8e9" stop-opacity=".45" />
+      <stop offset="1" stop-color="#9bd8e9" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow
+        dx="0"
+        dy="18"
+        stdDeviation="18"
+        flood-color="#173d32"
+        flood-opacity=".16"
+      />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#background)" />
+  <circle cx="920" cy="210" r="310" fill="url(#glow)" />
+  <circle cx="140" cy="560" r="250" fill="#dcece7" opacity=".55" />
+
+  <g transform="translate(76 66)">
+    <rect
+      width="18"
+      height="27"
+      rx="9"
+      fill="none"
+      stroke="#17221e"
+      stroke-width="3"
+    />
+    <text
+      x="34"
+      y="21"
+      fill="#17221e"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="23"
+      font-weight="700"
+    >
+      AirPods Recovery Kit
+    </text>
+  </g>
+
+  <g transform="translate(76 164)">
+    <circle cx="7" cy="7" r="7" fill="#14775e" opacity=".16" />
+    <circle cx="7" cy="7" r="3.5" fill="#14775e" />
+    <text
+      x="24"
+      y="12"
+      fill="#60716a"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="15"
+      font-weight="700"
+      letter-spacing="2"
+    >
+      PRIVATE BROWSER AUDIO TEST
+    </text>
+  </g>
+
+  <text
+    x="76"
+    y="236"
+    fill="#17221e"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="62"
+    font-weight="700"
+    letter-spacing="-3"
+  >
+    <tspan x="76" dy="0">Help wet, damaged,</tspan>
+    <tspan x="76" dy="68">or quiet AirPods.</tspan>
+  </text>
+
+  <text
+    x="78"
+    y="393"
+    fill="#60716a"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="23"
+  >
+    No account. No upload. No automatic playback.
+  </text>
+
+  <g transform="translate(76 450)">
+    <rect width="170" height="70" rx="17" fill="#ffffff" opacity=".8" />
+    <text
+      x="20"
+      y="31"
+      fill="#17221e"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="24"
+      font-weight="700"
+    >
+      0
+    </text>
+    <text
+      x="20"
+      y="51"
+      fill="#60716a"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="13"
+    >
+      automatic plays
+    </text>
+  </g>
+
+  <g transform="translate(260 450)">
+    <rect width="170" height="70" rx="17" fill="#ffffff" opacity=".8" />
+    <text
+      x="20"
+      y="31"
+      fill="#17221e"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="24"
+      font-weight="700"
+    >
+      20 sec
+    </text>
+    <text
+      x="20"
+      y="51"
+      fill="#60716a"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="13"
+    >
+      hard duration limit
+    </text>
+  </g>
+
+  <g transform="translate(444 450)">
+    <rect width="170" height="70" rx="17" fill="#ffffff" opacity=".8" />
+    <text
+      x="20"
+      y="31"
+      fill="#17221e"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="24"
+      font-weight="700"
+    >
+      100%
+    </text>
+    <text
+      x="20"
+      y="51"
+      fill="#60716a"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="13"
+    >
+      client-side
+    </text>
+  </g>
+
+  <g transform="translate(738 125)" filter="url(#shadow)">
+    <rect width="390" height="370" rx="42" fill="#ffffff" opacity=".82" />
+    <rect x="24" y="24" width="342" height="46" rx="23" fill="#e9efed" />
+    <rect x="29" y="29" width="168" height="36" rx="18" fill="#ffffff" />
+    <text
+      x="70"
+      y="52"
+      fill="#17221e"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="14"
+      font-weight="700"
+    >
+      Moisture pulse
+    </text>
+
+    <g transform="translate(80 105)">
+      <ellipse cx="70" cy="56" rx="58" ry="52" fill="#f5f8f7" stroke="#bdd1c9" stroke-width="4" />
+      <rect x="49" y="80" width="42" height="96" rx="21" fill="#edf3f1" stroke="#bdd1c9" stroke-width="4" />
+      <ellipse cx="70" cy="56" rx="32" ry="25" fill="#17221e" />
+      <ellipse cx="70" cy="56" rx="22" ry="17" fill="#091512" />
+    </g>
+
+    <g transform="translate(226 105)">
+      <ellipse cx="70" cy="56" rx="58" ry="52" fill="#f5f8f7" stroke="#bdd1c9" stroke-width="4" />
+      <rect x="49" y="80" width="42" height="96" rx="21" fill="#edf3f1" stroke="#bdd1c9" stroke-width="4" />
+      <ellipse cx="70" cy="56" rx="32" ry="25" fill="#17221e" />
+      <ellipse cx="70" cy="56" rx="22" ry="17" fill="#091512" />
+    </g>
+
+    <path
+      d="M195 119 C195 119 178 143 178 158 C178 169 186 177 195 177 C204 177 212 169 212 158 C212 143 195 119 195 119 Z"
+      fill="#4ca9d4"
+    />
+
+    <g transform="translate(293 291)">
+      <circle cx="30" cy="30" r="27" fill="#f7faf8" stroke="#d9e5e1" stroke-width="5" />
+      <text
+        x="30"
+        y="27"
+        fill="#60716a"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="10"
+        font-weight="700"
+        text-anchor="middle"
+      >
+        READY
+      </text>
+      <text
+        x="30"
+        y="40"
+        fill="#82938c"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="8"
+        font-weight="700"
+        letter-spacing="1"
+        text-anchor="middle"
+      >
+        TEST
+      </text>
+    </g>
+  </g>
+
+  <text
+    x="76"
+    y="582"
+    fill="#60716a"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="15"
+  >
+    Browser · macOS terminal · Codex skill
+  </text>
+</svg>
