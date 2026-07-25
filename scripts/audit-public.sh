@@ -28,6 +28,9 @@ zsh -n skills/recover-airpods-audio/scripts/airpods-recovery.sh
 node --check site/app.js
 node --check site/audio-engine.js
 node --check site/safety.js
+python3 -m py_compile \
+  skills/recover-airpods-audio/scripts/battery_check.py \
+  skills/recover-airpods-audio/scripts/generate_audio.py
 
 skill_validator="${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py"
 if [[ -f "$skill_validator" ]]; then

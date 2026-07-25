@@ -26,12 +26,14 @@ hardware repair.
 1. Collect the symptom: wet, quiet, silent, distorted, intermittent, or strange
    only during noise control.
 2. Check charging and whether both buds are detected.
-3. Disable noise control temporarily to distinguish a speaker problem from an
+3. On macOS, run the anonymous battery snapshot when battery or charging is
+   part of the symptom.
+4. Disable noise control temporarily to distinguish a speaker problem from an
    ANC or transparency microphone problem.
-4. Run the left/right channel test before a moisture pulse.
-5. Run a bounded pulse only after the safety preflight passes.
-6. Re-run the channel test and compare the result.
-7. Recommend hardware service when distortion persists, the device becomes
+5. Run the left/right channel test before a moisture pulse.
+6. Run a bounded pulse only after the safety preflight passes.
+7. Re-run the channel test and compare the result.
+8. Recommend hardware service when distortion persists, the device becomes
    warm, the battery is missing, or sharp rattling continues.
 
 ## macOS commands
@@ -41,6 +43,16 @@ Inspect the selected output without playing sound:
 ```bash
 ./scripts/airpods-recovery.sh diagnose
 ```
+
+Request a current battery snapshot from macOS:
+
+```bash
+./scripts/airpods-recovery.sh battery
+```
+
+The battery command prints only available component percentages. It never
+prints the AirPods device name or Bluetooth address. A browser cannot read this
+macOS status.
 
 After the user explicitly confirms both AirPods are out of their ears:
 

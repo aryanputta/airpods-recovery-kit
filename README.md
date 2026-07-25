@@ -1,14 +1,15 @@
 # AirPods Recovery Kit
 
-> Safe audio tests for wet or quiet AirPods.
+> Safe audio tests for wet, water-damaged, quiet, or distorted AirPods.
 
 [![Live demo](https://img.shields.io/badge/live-GitHub%20Pages-14775e)](https://aryanputta.github.io/airpods-recovery-kit/)
 [![Deploy GitHub Pages](https://github.com/aryanputta/airpods-recovery-kit/actions/workflows/pages.yml/badge.svg)](https://github.com/aryanputta/airpods-recovery-kit/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-17221e.svg)](LICENSE)
 
 AirPods Recovery Kit is a one-page browser tool, macOS terminal workflow, and
-Codex skill for wet AirPods, one AirPod sounding quiet, left or right audio
-failing, and distorted audio after moisture exposure.
+Codex skill for damaged or wet AirPods, AirPods water damage, one AirPod
+sounding quiet, left or right audio failing, and distorted audio after moisture
+exposure.
 
 **[Open the recovery tool →](https://aryanputta.github.io/airpods-recovery-kit/)**
 
@@ -50,6 +51,9 @@ press the start button.
 git clone https://github.com/aryanputta/airpods-recovery-kit
 cd airpods-recovery-kit
 
+# Request the current percentages macOS exposes, without printing device identity.
+./skills/recover-airpods-audio/scripts/airpods-recovery.sh battery
+
 # Verify that the selected output is an AirPods device.
 ./skills/recover-airpods-audio/scripts/airpods-recovery.sh diagnose
 
@@ -62,8 +66,12 @@ cd airpods-recovery-kit
   channels --confirm-low-volume
 ```
 
-The route check reports only `AirPods` or `not AirPods`. It never prints or
-stores the personal Bluetooth device name or address.
+The battery command prints only the available left, right, case, or overall
+percentages. The route check reports only `AirPods` or `not AirPods`. Neither
+prints or stores the personal Bluetooth device name or address.
+
+Browsers cannot read AirPods battery status from macOS or iOS. The percentage
+ring on the website is explicitly labeled as audio-test progress.
 
 ### Codex skill
 

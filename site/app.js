@@ -91,7 +91,9 @@ function setMode(nextMode) {
 
 function setProgress(progress) {
   const percent = Math.round(progress * 100);
-  progressValue.textContent = `${percent}%`;
+  progressValue.textContent =
+    app.dataset.running === "true" || percent > 0 ? `${percent}%` : "Ready";
+  progressRing.setAttribute("aria-valuenow", String(percent));
   progressRing.style.setProperty("--progress", `${percent * 3.6}deg`);
   stage.style.setProperty("--progress", String(progress));
 }

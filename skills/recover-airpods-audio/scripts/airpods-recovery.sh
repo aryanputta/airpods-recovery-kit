@@ -12,6 +12,15 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 2
 fi
 
+if [[ "$MODE" == "battery" ]]; then
+  if ! command -v python3 >/dev/null 2>&1; then
+    print -u2 "Missing required command: python3"
+    exit 2
+  fi
+  python3 "$SCRIPT_DIR/battery_check.py"
+  exit $?
+fi
+
 for required_command in swift python3 afplay osascript; do
   if ! command -v "$required_command" >/dev/null 2>&1; then
     print -u2 "Missing required command: $required_command"
@@ -31,6 +40,8 @@ mkdir -p "$RECOVERY_CACHE"
 case "$MODE" in
   diagnose)
     print "AirPods output verified."
+    print "Battery snapshot:"
+    print "  $0 battery"
     print "Moisture pulse:"
     print "  $0 pulse --confirm-out-of-ears"
     print "Left/right test:"
@@ -63,7 +74,7 @@ case "$MODE" in
     print "Channel test complete."
     ;;
   *)
-    print -u2 "Usage: $0 {diagnose|pulse|channels} [confirmation]"
+    print -u2 "Usage: $0 {diagnose|battery|pulse|channels} [confirmation]"
     exit 2
     ;;
 esac

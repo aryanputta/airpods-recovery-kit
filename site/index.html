@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Safely test wet, quiet, one-sided, or distorted AirPods with a private 20-second moisture pulse and left/right audio check."
+      content="Help diagnose wet, water-damaged, quiet, one-sided, or distorted AirPods with a private 20-second moisture pulse and left/right audio test."
     />
     <meta
       name="keywords"
-      content="wet AirPods, dry AirPods, water in AirPods, AirPods water eject, one AirPod quiet, left AirPod not working, distorted AirPods"
+      content="damaged AirPods, wet AirPods, AirPods water damage, dry AirPods, water in AirPods, AirPods water eject, one AirPod quiet, left AirPod not working, distorted AirPods"
     />
     <meta name="theme-color" content="#f4f7f5" />
-    <meta property="og:title" content="AirPods Recovery Kit" />
+    <meta
+      property="og:title"
+      content="Wet or Damaged AirPods Help | AirPods Recovery Kit"
+    />
     <meta
       property="og:description"
-      content="A private browser tool for wet, quiet, or distorted AirPods."
+      content="A free private browser test for wet, water-damaged, quiet, one-sided, or distorted AirPods."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -27,18 +30,57 @@
       href="https://aryanputta.github.io/airpods-recovery-kit/"
     />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <title>AirPods Recovery Kit | Wet or Quiet AirPods Test</title>
+    <title>Wet or Damaged AirPods Help | Free AirPods Audio Test</title>
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "AirPods Recovery Kit",
-        "url": "https://aryanputta.github.io/airpods-recovery-kit/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any modern browser",
-        "description": "A private browser tool that runs a bounded moisture pulse and left/right test for wet, quiet, or distorted AirPods.",
-        "isAccessibleForFree": true
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "AirPods Recovery Kit",
+            "url": "https://aryanputta.github.io/airpods-recovery-kit/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any modern browser",
+            "description": "A private browser tool that runs a bounded moisture pulse and left/right test for wet, water-damaged, quiet, or distorted AirPods.",
+            "isAccessibleForFree": true,
+            "featureList": [
+              "20-second bounded moisture pulse",
+              "Left and right AirPods audio test",
+              "No autoplay",
+              "No account or upload"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can a website dry wet or water-damaged AirPods?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No website can guarantee liquid removal or hardware repair. This page can run a bounded low-frequency pulse that may move small droplets away from the speaker mesh."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is one AirPod quiet or not working?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Possible causes include a blocked mesh, moisture, an empty battery, poor charging contact, audio balance, or damaged speaker or noise-control hardware."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can a website show live AirPods battery percentage?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Normal browsers cannot read AirPods battery status from macOS or iOS. The optional macOS command in this project can request a current battery snapshot without printing the device name or Bluetooth address."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
@@ -66,10 +108,13 @@
             <span aria-hidden="true"></span>
             Runs locally in your browser
           </p>
-          <h1 id="page-title">Help wet or quiet AirPods sound normal again.</h1>
+          <h1 id="page-title">
+            Help wet, damaged, or quiet AirPods sound normal again.
+          </h1>
           <p class="intro">
-            Run a careful moisture pulse or compare the left and right channels.
-            No account, no upload, and no automatic playback.
+            Check suspected AirPods water damage or one AirPod not working with
+            a careful moisture pulse and left/right test. No account, no upload,
+            and no automatic playback.
           </p>
 
           <div class="activation-flow" aria-label="Activation steps">
@@ -165,8 +210,17 @@
               <span></span><span></span><span></span>
             </div>
 
-            <div class="progress-ring" id="progress-ring">
-              <span id="progress-value">0%</span>
+            <div
+              class="progress-ring"
+              id="progress-ring"
+              role="progressbar"
+              aria-label="Audio test progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <span id="progress-value">Ready</span>
+              <small>test</small>
             </div>
           </div>
 
@@ -278,24 +332,69 @@
         </ol>
       </section>
 
-      <section class="developer-path">
-        <div>
-          <p class="eyebrow">Terminal and Codex</p>
-          <h2>Use the same guarded workflow locally.</h2>
-          <p>
-            The repository includes a macOS route check, bounded audio
-            generator, privacy audit, and the
-            <code>recover-airpods-audio</code> Codex skill.
+      <section class="developer-shell" aria-labelledby="developer-title">
+        <div class="developer-intro">
+          <p class="eyebrow"><span></span>Optional tools</p>
+          <div class="developer-title-row">
+            <h2 id="developer-title">
+              Browser first. Terminal when you need deeper checks.
+            </h2>
+            <span class="optional-badge">Optional</span>
+              </div>
+              <p>
+                Most people only need the test above. On a Mac, the local toolkit
+                can request the battery values macOS exposes and verify the
+                selected audio route before playing anything.
           </p>
         </div>
-        <pre><code>git clone https://github.com/aryanputta/airpods-recovery-kit
+
+        <details class="developer-panel">
+          <summary>
+            <span class="terminal-glyph" aria-hidden="true">&gt;_</span>
+              <span class="developer-summary">
+                <strong>Open Terminal + Codex tools</strong>
+                <small>Battery snapshot · route check · bounded audio</small>
+            </span>
+            <span class="developer-chevron" aria-hidden="true">⌄</span>
+          </summary>
+
+          <div class="developer-content">
+            <div class="developer-note">
+              <span>Why use it?</span>
+                <p>
+                  Battery and route checks return only anonymous status, without
+                  printing a personal device name or Bluetooth address.
+              </p>
+              <p>
+                The bundled <code>recover-airpods-audio</code> skill gives
+                Codex the same stop conditions and volume limits.
+              </p>
+            </div>
+
+            <div class="command-wrap">
+              <div class="command-label">
+                <span>macOS battery + route check</span>
+                <span>4 commands</span>
+              </div>
+              <pre><code>git clone https://github.com/aryanputta/airpods-recovery-kit
 cd airpods-recovery-kit
+./skills/recover-airpods-audio/scripts/airpods-recovery.sh battery
 ./skills/recover-airpods-audio/scripts/airpods-recovery.sh diagnose</code></pre>
+              <a
+                class="developer-link"
+                href="https://github.com/aryanputta/airpods-recovery-kit#quickstart"
+              >
+                See the complete Terminal and Codex setup
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </details>
       </section>
 
       <section class="faq" aria-labelledby="faq-title">
         <p class="eyebrow">Common questions</p>
-        <h2 id="faq-title">Wet AirPods and one-sided audio</h2>
+        <h2 id="faq-title">Wet, damaged, or one-sided AirPods</h2>
         <details>
           <summary>Can a website dry wet AirPods?</summary>
           <p>
@@ -317,6 +416,14 @@ cd airpods-recovery-kit
           <p>
             No. AirPods firmware updates are controlled by Apple devices. This
             tool only runs local audio tests and explains what the result means.
+          </p>
+        </details>
+        <details>
+          <summary>Can this website show live AirPods battery percentage?</summary>
+          <p>
+            No normal browser can read AirPods battery status from macOS or
+            iOS. The optional Mac command above requests a current snapshot and
+            prints only left, right, and case percentages that macOS exposes.
           </p>
         </details>
       </section>
