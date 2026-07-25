@@ -25,6 +25,10 @@ const sitemap = readFileSync(
 const socialPreview = readFileSync(
   new URL("../site/social-preview.png", import.meta.url),
 );
+const googleVerification = readFileSync(
+  new URL("../site/google4ff17f9649b569e1.html", import.meta.url),
+  "utf8",
+);
 
 test("sound starts disabled and only from a click handler", () => {
   assert.match(
@@ -60,7 +64,10 @@ test("page includes reduced-motion behavior", () => {
 test("page includes canonical and structured metadata", () => {
   assert.match(html, /rel="canonical"/);
   assert.match(html, /application\/ld\+json/);
-  assert.match(html, /Wet AirPods\? How to Dry and Test Them Safely/);
+  assert.match(
+    html,
+    /Wet AirPods\? Free Drying Guide and Private Audio Test/,
+  );
   assert.match(html, /"@type": "FAQPage"/);
   assert.match(html, /AirPods water damage/);
   assert.match(html, /property="og:image"/);
@@ -123,4 +130,15 @@ test("liquid-exposure copy requires drying before playback", () => {
   assert.match(html, /dried for 2\+ hours and are out of my ears/);
   assert.match(html, /Wait at least two hours/);
   assert.match(app, /dried for 2\+ hours and are out of my ears/);
+});
+
+test("Google verification remains available through both supported methods", () => {
+  assert.match(
+    html,
+    /name="google-site-verification"\s+content="UFta_thgTg9wwm9isDRF8YjI2XLlsRQC1keUDqElwKg"/,
+  );
+  assert.equal(
+    googleVerification.trim(),
+    "google-site-verification: google4ff17f9649b569e1.html",
+  );
 });

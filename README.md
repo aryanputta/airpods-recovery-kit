@@ -1,6 +1,6 @@
 # AirPods Recovery Kit
 
-> Safe recovery tests for wet AirPods.
+> Free, private recovery tests for wet AirPods.
 
 [![GitHub stars](https://img.shields.io/github/stars/aryanputta/airpods-recovery-kit?style=flat&logo=github&label=stars)](https://github.com/aryanputta/airpods-recovery-kit/stargazers)
 [![Live demo](https://img.shields.io/badge/live-GitHub%20Pages-14775e)](https://aryanputta.github.io/airpods-recovery-kit/)
@@ -21,7 +21,7 @@
   <a href="#codex-skill">Install the Codex skill</a>
 </p>
 
-A private one-page tool for wet or water-damaged AirPods, one AirPod not
+A free, no-cost one-page tool for wet or water-damaged AirPods, one AirPod not
 working, uneven left/right volume, muffled sound, crackling, or distortion.
 Sound never autoplays and no device data leaves the browser.
 
@@ -136,3 +136,11 @@ opening an issue or pull request.
 
 [MIT](LICENSE). AirPods is a trademark of Apple Inc. This independent project
 is not affiliated with or endorsed by Apple.
+
+## Star history
+
+<p align="center">
+  <a href="https://www.star-history.com/#aryanputta/airpods-recovery-kit&Date">
+    <img src="https://api.star-history.com/svg?repos=aryanputta/airpods-recovery-kit&type=Date" alt="AirPods Recovery Kit star history chart" width="100%">
+  </a>
+</p>
