@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Safely test wet, quiet, one-sided, or distorted AirPods with a private 20-second moisture pulse and left/right audio check."
+    />
+    <meta
+      name="keywords"
+      content="wet AirPods, dry AirPods, water in AirPods, AirPods water eject, one AirPod quiet, left AirPod not working, distorted AirPods"
+    />
+    <meta name="theme-color" content="#f4f7f5" />
+    <meta property="og:title" content="AirPods Recovery Kit" />
+    <meta
+      property="og:description"
+      content="A private browser tool for wet, quiet, or distorted AirPods."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aryanputta.github.io/airpods-recovery-kit/"
+    />
+    <link
+      rel="canonical"
+      href="https://aryanputta.github.io/airpods-recovery-kit/"
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>AirPods Recovery Kit | Wet or Quiet AirPods Test</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "AirPods Recovery Kit",
+        "url": "https://aryanputta.github.io/airpods-recovery-kit/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any modern browser",
+        "description": "A private browser tool that runs a bounded moisture pulse and left/right test for wet, quiet, or distorted AirPods.",
+        "isAccessibleForFree": true
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="AirPods Recovery Kit home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        AirPods Recovery Kit
+      </a>
+      <nav aria-label="Primary">
+        <a href="#how-it-works">How it works</a>
+        <a
+          href="https://github.com/aryanputta/airpods-recovery-kit"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span aria-hidden="true"></span>
+            Runs locally in your browser
+          </p>
+          <h1 id="page-title">Help wet or quiet AirPods sound normal again.</h1>
+          <p class="intro">
+            Run a careful moisture pulse or compare the left and right channels.
+            No account, no upload, and no automatic playback.
+          </p>
+
+          <div class="activation-flow" aria-label="Activation steps">
+            <span><b>1</b> Connect</span>
+            <i aria-hidden="true"></i>
+            <span><b>2</b> Prepare</span>
+            <i aria-hidden="true"></i>
+            <span><b>3</b> Test</span>
+          </div>
+        </div>
+
+        <div
+          class="recovery-app"
+          id="recovery-app"
+          data-mode="moisture"
+          data-running="false"
+        >
+          <div class="mode-switcher" role="tablist" aria-label="Recovery mode">
+            <button
+              class="is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-mode="moisture"
+            >
+              Moisture pulse
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-mode="channels"
+            >
+              Left / right test
+            </button>
+          </div>
+
+          <div class="device-stage" id="device-stage" data-state="idle">
+            <div class="pulse pulse-one" aria-hidden="true"></div>
+            <div class="pulse pulse-two" aria-hidden="true"></div>
+            <svg
+              class="earbuds"
+              viewBox="0 0 420 260"
+              role="img"
+              aria-label="Two illustrated wireless earbuds"
+            >
+              <defs>
+                <linearGradient id="bud-fill" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#dfe9e5" />
+                </linearGradient>
+                <filter id="bud-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow
+                    dx="0"
+                    dy="12"
+                    stdDeviation="12"
+                    flood-color="#174237"
+                    flood-opacity=".16"
+                  />
+                </filter>
+              </defs>
+              <g class="bud bud-left" filter="url(#bud-shadow)">
+                <path
+                  d="M104 42c-35 0-62 27-62 62 0 29 18 51 44 59v55c0 18 11 30 27 30s27-12 27-30V123c20-11 32-29 32-52 0-18-9-29-27-29h-41Z"
+                  fill="url(#bud-fill)"
+                  stroke="#bfd1ca"
+                  stroke-width="3"
+                />
+                <ellipse cx="103" cy="97" rx="34" ry="28" fill="#26332f" />
+                <ellipse cx="103" cy="97" rx="24" ry="19" fill="#101815" />
+                <circle cx="113" cy="205" r="5" fill="#91aaa1" />
+              </g>
+              <g class="bud bud-right" filter="url(#bud-shadow)">
+                <path
+                  d="M316 42c35 0 62 27 62 62 0 29-18 51-44 59v55c0 18-11 30-27 30s-27-12-27-30V123c-20-11-32-29-32-52 0-18 9-29 27-29h41Z"
+                  fill="url(#bud-fill)"
+                  stroke="#bfd1ca"
+                  stroke-width="3"
+                />
+                <ellipse cx="317" cy="97" rx="34" ry="28" fill="#26332f" />
+                <ellipse cx="317" cy="97" rx="24" ry="19" fill="#101815" />
+                <circle cx="307" cy="205" r="5" fill="#91aaa1" />
+              </g>
+              <path
+                class="droplet"
+                d="M210 40c0 0-18 24-18 37a18 18 0 0 0 36 0c0-13-18-37-18-37Z"
+                fill="#4ca9d4"
+              />
+            </svg>
+
+            <div class="waveform" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+
+            <div class="progress-ring" id="progress-ring">
+              <span id="progress-value">0%</span>
+            </div>
+          </div>
+
+          <div class="app-status">
+            <div>
+              <p class="step-label">Current state</p>
+              <h2 id="status-title">Ready for moisture mode</h2>
+            </div>
+            <span class="status-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="checks">
+            <label>
+              <input id="primary-confirmation" type="checkbox" />
+              <span>
+                <strong id="primary-title">My AirPods are out of my ears</strong>
+                <small id="primary-help">
+                  Place both speaker meshes downward on a clean, dry cloth.
+                </small>
+              </span>
+            </label>
+
+            <label>
+              <input id="output-confirmed" type="checkbox" />
+              <span>
+                <strong>I selected AirPods as the audio output</strong>
+                <small>
+                  The browser cannot verify your operating-system audio route.
+                </small>
+              </span>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="start-button" class="primary-button" type="button" disabled>
+              Run 20-second moisture pulse
+            </button>
+            <button id="stop-button" class="stop-button" type="button" hidden>
+              Stop sound
+            </button>
+          </div>
+          <p id="status-message" class="status-message" aria-live="polite">
+            Complete both safety checks to continue.
+          </p>
+
+          <div id="result-panel" class="result-panel" hidden>
+            <p>What did you hear?</p>
+            <div>
+              <button type="button" data-result="equal">Both sound equal</button>
+              <button type="button" data-result="uneven">One side is quieter</button>
+              <button type="button" data-result="distorted">Crackling or tinny</button>
+            </div>
+            <p id="recommendation" class="recommendation" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Safety properties">
+        <div>
+          <strong>0</strong>
+          <span>automatic plays</span>
+        </div>
+        <div>
+          <strong>20 sec</strong>
+          <span>hard duration limit</span>
+        </div>
+        <div>
+          <strong>100%</strong>
+          <span>client-side</span>
+        </div>
+      </section>
+
+      <section class="explanation" id="how-it-works">
+        <div>
+          <p class="eyebrow">What the result tells you</p>
+          <h2>The symptom is the diagnostic.</h2>
+        </div>
+        <ol>
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Strange only in Noise Control</h3>
+              <p>
+                The transparency or ANC microphone and vent are more likely than
+                the speaker driver.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Quiet in every mode</h3>
+              <p>
+                Check the speaker mesh, charging contact, battery level, and
+                left/right balance.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Still crackling after drying</h3>
+              <p>
+                Stop testing. Persistent distortion can indicate a damaged
+                microphone or driver that needs service.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="developer-path">
+        <div>
+          <p class="eyebrow">Terminal and Codex</p>
+          <h2>Use the same guarded workflow locally.</h2>
+          <p>
+            The repository includes a macOS route check, bounded audio
+            generator, privacy audit, and the
+            <code>recover-airpods-audio</code> Codex skill.
+          </p>
+        </div>
+        <pre><code>git clone https://github.com/aryanputta/airpods-recovery-kit
+cd airpods-recovery-kit
+./skills/recover-airpods-audio/scripts/airpods-recovery.sh diagnose</code></pre>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-title">
+        <p class="eyebrow">Common questions</p>
+        <h2 id="faq-title">Wet AirPods and one-sided audio</h2>
+        <details>
+          <summary>Can a website dry wet AirPods?</summary>
+          <p>
+            No website can guarantee that. This page can play a bounded
+            low-frequency pulse that may move small droplets away from the
+            speaker mesh. Air drying and hardware service may still be needed.
+          </p>
+        </details>
+        <details>
+          <summary>Why is one AirPod quiet or not working?</summary>
+          <p>
+            Common causes include a blocked mesh, moisture, an empty battery,
+            poor charging contact, audio balance, or a damaged speaker or
+            noise-control microphone.
+          </p>
+        </details>
+        <details>
+          <summary>Does this update AirPods firmware?</summary>
+          <p>
+            No. AirPods firmware updates are controlled by Apple devices. This
+            tool only runs local audio tests and explains what the result means.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Stop if an AirPod becomes warm, rattles sharply, or causes discomfort.
+        Never use heat, compressed air, or sharp tools.
+      </p>
+      <p>
+        AirPods is a trademark of Apple Inc. This independent project is not
+        affiliated with or endorsed by Apple.
+      </p>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "airpods-recovery-kit",
+  "version": "0.1.0",
+  "description": "Safety-first browser, terminal, and Codex workflows for wet or distorted AirPods.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "repository": "https://github.com/aryanputta/airpods-recovery-kit",
+  "scripts": {
+    "test": "node --test"
+  }
+}

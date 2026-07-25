@@ -1,0 +1,4 @@
+interface:
+  display_name: "AirPods Audio Recovery"
+  short_description: "Diagnose wet or distorted AirPods safely"
+  default_prompt: "Use $recover-airpods-audio to safely diagnose wet, quiet, one-sided, or distorted AirPods."

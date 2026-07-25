@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aryanputta.github.io/airpods-recovery-kit/sitemap.xml
