@@ -27,6 +27,10 @@ test("sound starts disabled and only from a click handler", () => {
   );
   assert.match(
     app,
+    /engine\.running \|\| app\.dataset\.running === "true"/,
+  );
+  assert.match(
+    app,
     /\.mode-switcher button\[data-mode\]/,
   );
 });
@@ -34,6 +38,8 @@ test("sound starts disabled and only from a click handler", () => {
 test("page exposes status updates to assistive technology", () => {
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /role="tablist"/);
+  assert.match(app, /stopButton\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(app, /startButton\.focus\(\{ preventScroll: true \}\)/);
 });
 
 test("page includes reduced-motion behavior", () => {
@@ -48,6 +54,7 @@ test("page includes canonical and structured metadata", () => {
   assert.match(html, /AirPods water damage/);
   assert.match(html, /property="og:image"/);
   assert.match(html, /name="twitter:card"/);
+  assert.match(html, /Does this work with every AirPods generation/);
 
   const structuredData = html.match(
     /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,

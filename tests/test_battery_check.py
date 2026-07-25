@@ -27,6 +27,12 @@ class BatteryCheckTests(unittest.TestCase):
                                 "device_batteryLevelLeft": "84%",
                                 "device_batteryLevelRight": "79%",
                                 "device_batteryLevelCase": "61%",
+                                "device_batteryStatus": 1,
+                                "nested": {
+                                    "Cached AirPods": {
+                                        "device_batteryLevelLeft": "9%",
+                                    }
+                                },
                             }
                         }
                     ],
@@ -49,6 +55,9 @@ class BatteryCheckTests(unittest.TestCase):
     def test_rejects_out_of_range_values(self) -> None:
         self.assertIsNone(battery_check.parse_percent("unknown"))
         self.assertIsNone(battery_check.parse_percent("101%"))
+        self.assertIsNone(battery_check.parse_percent("AirPods Pro 2"))
+        self.assertIsNone(battery_check.parse_percent("iOS 18 100%"))
+        self.assertIsNone(battery_check.parse_percent("84"))
         self.assertEqual(battery_check.parse_percent("0%"), 0)
         self.assertEqual(battery_check.parse_percent(100), 100)
 

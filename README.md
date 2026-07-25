@@ -38,10 +38,25 @@ exposure.
 | Automatic playback | `0` | Start button is disabled until two confirmations pass |
 | Moisture-pulse duration | `≤ 20 seconds` | JavaScript and generated-WAV tests |
 | Web Audio gain | `≤ 0.03` | Constant-bound unit test |
+| Terminal system volume | Never raised; high volume capped at `12%`, then restored | Shell contract test |
 | Personal device data | `0 files` | Pre-publish privacy audit |
 | Website data transfer | `0 requests required` | Fully static GitHub Pages site |
 
 These are safety-contract measurements, not repair-success claims.
+
+## Compatibility
+
+| Feature | Compatibility |
+|---|---|
+| Browser moisture pulse | Any AirPods generation selected as the audio output |
+| Browser left/right test | Any stereo AirPods generation or Bluetooth earbuds |
+| macOS route guard | Any selected output whose system name identifies it as AirPods |
+| macOS battery snapshot | Best-effort; only percentages the connected Mac exposes |
+| Codex skill | Browser workflow on any platform, guarded terminal workflow on macOS |
+
+Audio testing is generation-independent. Battery reporting cannot be guaranteed
+across every AirPods and macOS combination, so missing data is reported as
+unavailable instead of estimated.
 
 ## Quickstart
 
@@ -118,7 +133,8 @@ symptom
 
 The website uses the Web Audio API. The terminal workflow generates the same
 bounded PCM waveform locally, checks the macOS Core Audio route, caps system
-volume, and plays it with `afplay`.
+volume only when it is above 12 percent, restores the original value, and plays
+with `afplay`. It never raises a lower volume setting.
 
 ## When to stop testing
 
@@ -181,6 +197,9 @@ The audit rejects:
 
 ## Updates
 
+- **v0.1.1, 2026-07-25:** PRaxis release audit; volume now only caps downward
+  and restores, battery parsing uses an exact allowlist, browser re-entry and
+  Stop focus are guarded, and Git history joins the privacy scan.
 - **2026-07-25:** Added the one-page browser tool, animated recovery state,
   anonymous battery snapshot, macOS route guard, Codex skill, privacy audit,
   structured search metadata, and bounded waveform tests.

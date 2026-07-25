@@ -8,8 +8,10 @@ description: Diagnose wet, quiet, one-sided, crackling, or distorted AirPods wit
 ## Overview
 
 Guide a user through symptom isolation before attempting any sound playback.
-Treat the workflow as diagnosis and a cautious recovery attempt, not a guaranteed
-hardware repair.
+The audio workflow applies to any AirPods generation selected as the output.
+Treat it as diagnosis and a cautious recovery attempt, not a guaranteed hardware
+repair. Battery reporting remains best-effort because macOS may not expose every
+component percentage.
 
 ## Prerequisites
 
@@ -78,6 +80,7 @@ confirmation in the current conversation.
   variables, usernames, or credentials.
 - Never claim that a tone removes all liquid or repairs hardware damage.
 - Never use heat, compressed air, sharp tools, or added liquid.
+- Never raise the user's output volume; cap only higher values and restore them.
 - Never modify Bluetooth pairing databases, preferences, or firmware.
 
 ## Verification

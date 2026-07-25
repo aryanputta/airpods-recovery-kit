@@ -12,6 +12,21 @@ from typing import Any
 
 SYSTEM_PROFILER = "/usr/sbin/system_profiler"
 BATTERY_LABELS = ("left", "right", "case", "overall")
+BATTERY_FIELD_LABELS = {
+    "batterylevelleft": "left",
+    "devicebatterylevelleft": "left",
+    "devicebatterypercentleft": "left",
+    "batterylevelright": "right",
+    "devicebatterylevelright": "right",
+    "devicebatterypercentright": "right",
+    "batterylevelcase": "case",
+    "devicebatterylevelcase": "case",
+    "devicebatterypercentcase": "case",
+    "batterylevel": "overall",
+    "devicebatterylevel": "overall",
+    "devicebatterylevelmain": "overall",
+    "devicebatterypercent": "overall",
+}
 
 
 def parse_percent(value: Any) -> int | None:
@@ -21,7 +36,7 @@ def parse_percent(value: Any) -> int | None:
     if isinstance(value, (int, float)):
         percent = int(value)
     elif isinstance(value, str):
-        match = re.search(r"(?<!\d)(\d{1,3})(?:\s*%)?", value)
+        match = re.fullmatch(r"\s*(\d{1,3})\s*%\s*", value)
         if match is None:
             return None
         percent = int(match.group(1))
@@ -32,13 +47,11 @@ def parse_percent(value: Any) -> int | None:
 
 def iter_connected_airpods(
     node: Any,
-    *,
-    connected: bool = False,
 ) -> Iterator[dict[str, Any]]:
     """Yield only AirPods payloads found inside connected-device sections."""
     if isinstance(node, list):
         for item in node:
-            yield from iter_connected_airpods(item, connected=connected)
+            yield from iter_connected_airpods(item)
         return
 
     if not isinstance(node, dict):
@@ -46,20 +59,29 @@ def iter_connected_airpods(
 
     for key, value in node.items():
         normalized_key = key.casefold().replace(" ", "_")
-        child_connected = connected
+        if normalized_key == "device_connected":
+            yield from iter_airpods_entries(value)
+            continue
         if "device_not_connected" in normalized_key:
-            child_connected = False
-        elif "device_connected" in normalized_key:
-            child_connected = True
+            continue
+        yield from iter_connected_airpods(value)
 
-        if (
-            child_connected
-            and "airpods" in normalized_key
-            and isinstance(value, dict)
-        ):
+
+def iter_airpods_entries(node: Any) -> Iterator[dict[str, Any]]:
+    """Yield direct named AirPods entries from a connected-device section."""
+    if isinstance(node, list):
+        for item in node:
+            yield from iter_airpods_entries(item)
+        return
+
+    if not isinstance(node, dict):
+        return
+
+    for key, value in node.items():
+        if "airpods" in key.casefold() and isinstance(value, dict):
             yield value
-
-        yield from iter_connected_airpods(value, connected=child_connected)
+        elif isinstance(value, list):
+            yield from iter_airpods_entries(value)
 
 
 def iter_fields(node: Any) -> Iterator[tuple[str, Any]]:
@@ -77,14 +99,9 @@ def extract_battery(payload: dict[str, Any]) -> dict[str, int]:
     result: dict[str, int] = {}
     for key, value in iter_fields(payload):
         normalized_key = re.sub(r"[^a-z]", "", key.casefold())
-        if "battery" not in normalized_key:
+        label = BATTERY_FIELD_LABELS.get(normalized_key)
+        if label is None or label in result:
             continue
-
-        label = "overall"
-        for component in ("left", "right", "case"):
-            if component in normalized_key:
-                label = component
-                break
 
         percent = parse_percent(value)
         if percent is not None:

@@ -98,6 +98,14 @@
                   "@type": "Answer",
                   "text": "Normal browsers cannot read AirPods battery status from macOS or iOS. The optional macOS command in this project can request a current battery snapshot without printing the device name or Bluetooth address."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this work with every AirPods generation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The browser audio tests work with any AirPods generation selected as the audio output. The optional battery snapshot depends on which percentages the connected Mac exposes and may be unavailable."
+                }
               }
             ]
           }
@@ -445,6 +453,15 @@ cd airpods-recovery-kit
             No normal browser can read AirPods battery status from macOS or
             iOS. The optional Mac command above requests a current snapshot and
             prints only left, right, and case percentages that macOS exposes.
+          </p>
+        </details>
+        <details>
+          <summary>Does this work with every AirPods generation?</summary>
+          <p>
+            The moisture and left/right audio tests work with any AirPods
+            generation selected as your audio output. The optional Mac battery
+            snapshot is best-effort because the fields exposed by macOS vary by
+            hardware and system version.
           </p>
         </details>
       </section>

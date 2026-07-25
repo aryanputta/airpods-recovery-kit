@@ -111,12 +111,17 @@ function setRunning(running) {
 }
 
 async function startRecovery() {
+  if (engine.running || app.dataset.running === "true") {
+    return;
+  }
+
   if (!canStartRecovery(getSafetyState())) {
     statusMessage.textContent = "The safety checks are incomplete.";
     return;
   }
 
   setRunning(true);
+  stopButton.focus({ preventScroll: true });
   resultPanel.hidden = true;
   recommendation.textContent = "";
   statusTitle.textContent =
@@ -128,10 +133,13 @@ async function startRecovery() {
       ? "Keep both AirPods out of your ears and facing downward."
       : "First tone: left. Second tone: right.";
 
+  let stoppedByUser = false;
+
   try {
     if (mode === RecoveryMode.MOISTURE) {
       const result = await engine.runMoisturePulse({ onProgress: setProgress });
       if (result.stopped) {
+        stoppedByUser = true;
         return;
       }
       statusTitle.textContent = "Pulse complete";
@@ -151,6 +159,7 @@ async function startRecovery() {
         },
       });
       if (result.stopped) {
+        stoppedByUser = true;
         return;
       }
       statusTitle.textContent = "Channel test complete";
@@ -163,7 +172,9 @@ async function startRecovery() {
       error instanceof Error ? error.message : "Unknown audio error.";
   } finally {
     setRunning(false);
-    updateSafetyState();
+    if (!stoppedByUser) {
+      updateSafetyState();
+    }
   }
 }
 
@@ -172,10 +183,11 @@ function stopRecovery() {
     return;
   }
   setRunning(false);
+  startButton.focus({ preventScroll: true });
   setProgress(0);
   statusTitle.textContent = "Stopped";
-  statusMessage.textContent = "No sound is playing.";
   updateSafetyState();
+  statusMessage.textContent = "No sound is playing. You can restart when ready.";
 }
 
 for (const button of modeButtons) {

@@ -22,6 +22,20 @@ if rg --hidden --files . -g '!.git/**' -g '!graphify-out/**' | \
   exit 1
 fi
 
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  revisions=("${(@f)$(git rev-list --all)}")
+  if (( ${#revisions} > 0 )) && git grep -l -I -E "$private_pattern" \
+    "${revisions[@]}" -- . ':(exclude)scripts/audit-public.sh'; then
+    print -u2 "Privacy audit failed: private data found in Git history."
+    exit 1
+  fi
+  if git log --all --name-only --format= | \
+    rg -i '(^|/)(\.env($|\.)|.*\.plist$|.*\.mobileconfig$|id_rsa|id_ed25519|credentials|secrets?\.)'; then
+    print -u2 "Privacy audit failed: sensitive filename found in Git history."
+    exit 1
+  fi
+fi
+
 npm test
 python3 -m unittest discover -s tests -p 'test_*.py'
 zsh -n skills/recover-airpods-audio/scripts/airpods-recovery.sh

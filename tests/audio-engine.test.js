@@ -6,6 +6,7 @@ import {
   CHANNEL_GAIN,
   MOISTURE_DURATION_SECONDS,
   MOISTURE_GAIN,
+  RecoveryAudioEngine,
 } from "../site/audio-engine.js";
 
 test("moisture pulse uses bounded gain and duration", () => {
@@ -39,4 +40,29 @@ test("pulse schedule rejects unsafe duration", () => {
     () => buildPulseSchedule({ durationSeconds: 21 }),
     /Unsafe pulse schedule/,
   );
+});
+
+test("stop resolves an active run and clears every oscillator", async () => {
+  const engine = new RecoveryAudioEngine();
+  const oscillator = {
+    onended: () => {},
+    stopCalls: 0,
+    stop() {
+      this.stopCalls += 1;
+    },
+  };
+  const result = new Promise((resolve) => {
+    engine.activeResolve = resolve;
+  });
+
+  engine.running = true;
+  engine.activeOscillators.add(oscillator);
+
+  assert.equal(engine.stop(), true);
+  assert.deepEqual(await result, { stopped: true });
+  assert.equal(engine.running, false);
+  assert.equal(engine.activeOscillators.size, 0);
+  assert.equal(engine.activeResolve, null);
+  assert.equal(oscillator.onended, null);
+  assert.equal(oscillator.stopCalls, 1);
 });
