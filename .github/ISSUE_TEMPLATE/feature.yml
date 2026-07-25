@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a focused improvement to diagnosis, safety, privacy, or usability.
+title: "feature: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem remains unsolved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful behavior, not an implementation wishlist.
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Safety and privacy impact
+      description: Could this play sound, inspect a device, or expose local information?
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: This proposal does not require autoplay.
+          required: true
+        - label: This proposal does not require publishing personal device data.
+          required: true

@@ -157,6 +157,9 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 ./scripts/audit-public.sh
 ```
 
+Focused fixes and safety improvements are welcome. Read
+[CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request.
+
 ## Privacy boundary
 
 The audit rejects:
